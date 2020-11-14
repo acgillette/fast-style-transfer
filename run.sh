@@ -13,12 +13,15 @@ add-apt-repository -y ppa:jonathonf/ffmpeg-3 2>&1
 apt-install || exit 1
 
 #create folders
+#! /bin/bash
 mkdir data
-mkdir data/bin
+cd data
+wget http://www.vlfeat.org/matconvnet/models/beta16/imagenet-vgg-verydeep-19.mat
+mkdir bin
+wget http://msvocds.blob.core.windows.net/coco2014/train2014.zip
+unzip train2014.zip
+cd ..
 
 #run style transfer on video
-python transform_video.py --in-path examples/content/fox.mp4 \
-  --checkpoint ./scream.ckpt \
-  --out-path /artifacts/out.mp4 \
-  --device /gpu:0 \
-  --batch-size 4 2>&1
+python style.py --style ward.jpg \
+  --checkpoint-dir /checkpoints \
