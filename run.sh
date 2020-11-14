@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APT_PACKAGES="apt-utils ffmpeg libav-tools x264 x265"
+APT_PACKAGES="apt-utils ffmpeg libav-tools x264 x265 wget"
 apt-install() {
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get update -q
@@ -8,9 +8,6 @@ apt-install() {
 	return $?
 }
 
-#install ffmpeg to container
-add-apt-repository -y ppa:jonathonf/ffmpeg-3 2>&1
-apt-install || exit 1
 
 #create folders
 #! /bin/bash
@@ -24,4 +21,4 @@ cd ..
 
 #run style transfer on video
 python style.py --style ward.jpg \
-  --checkpoint-dir /checkpoints \
+  --checkpoint-dir /storage \
