@@ -8,6 +8,8 @@ apt-install() {
 	return $?
 }
 
+#install ffmpeg to container
+apt-install || exit 1
 
 #create folders
 #! /bin/bash
