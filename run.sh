@@ -23,4 +23,7 @@ cd ..
 
 #run style transfer on video
 python style.py --style ward.jpg \
-  --checkpoint-dir /storage \
+  --checkpoint-dir /artifacts \
+  --test test.jpeg \
+  --test-dir /artifacts \
+
